@@ -1,0 +1,51 @@
+{% extends 'publicsite/layout.html' %} {% load static %}
+
+<!--  -->
+{% block titles %}Профиль{% endblock %}
+
+<!--  -->
+{% block stl %} <link href="{% static 'privatesite/css/profile.css' %}"
+rel="stylesheet"" /> {% endblock %}
+
+<!--  -->
+{% block content %}
+<div class="property">
+  {% if not google %}
+  <a href="http://localhost:5062/login">Войти в Google</a>
+  {% else %}
+  <img src="{% static 'publicsite/img/cloud-computing.png' %}" alt="logo" />
+  <span class="logo">REYS CLOUD</span>
+  <div class="menu_profile">
+    <h3>Навигация</h3>
+    <ul>
+      <a href="{% url 'home' %}"
+        ><li><i class="fas fa-home"></i> Настройки</li></a
+      >
+      <a href="{% url 'search' %}"
+        ><li><i class="fas fa-search"></i> Папка</li></a
+      >
+      <a href="{% url 'profile' %}"
+        ><li><i class="fas fa-user-circle"></i> Добавить приложение</li></a
+      >
+    </ul>
+  </div>
+  <div class="applications">
+    {% if not app %}
+    <p>Нету приложений</p>
+    {% else %} {% for item in app %}
+    <ul>
+      <a href="{% url 'home' %}">
+        <li>
+          {% if item.img != None %}
+          <img src="{{ item.img }}" alt="img" />
+          {% else %}
+          <img src="{% static 'publicsite/img/no-results.png' %}" alt="img" />
+          {% endif %} {{ item.title }}
+        </li>
+      </a>
+    </ul>
+    {% endfor %} {% endif %}
+  </div>
+  {% endif %}
+</div>
+{% endblock %}

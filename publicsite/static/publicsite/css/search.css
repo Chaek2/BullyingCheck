@@ -1,0 +1,15 @@
+main .property{
+    float: left;
+    color: #fff;
+    margin-top: 100px;
+    text-align: center;
+    width: 75%;
+  }
+  main .property h1 {font-size: 50px;}
+  main .property p {max-width: 700px; margin: 20px auto;}
+
+  main form{
+    margin-left: 10%;
+    width: 700px;
+    margin-top: 10px;
+  }
