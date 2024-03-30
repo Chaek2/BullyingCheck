@@ -2,8 +2,10 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .forms import NameForm
 
+
 def home(request):
     return render(request, 'publicsite/home.html')
+
 
 def search(request):
     if request.method == 'POST':
@@ -11,15 +13,15 @@ def search(request):
         if form.is_valid():
             data = {
                 'error': form.cleaned_data['app_name'],
-                'forms':form,
-                'apps':{
-                    '1':{
-                        'url':'asfs',
-                        'email':'gtg'
+                'forms': form,
+                'apps': {
+                    '1': {
+                        'url': 'asfs',
+                        'email': 'gtg'
                     },
-                    '2':{
-                        'url':'tht',
-                        'email':'plk'
+                    '2': {
+                        'url': 'tht',
+                        'email': 'plk'
                     }
                 }
             }
@@ -27,13 +29,6 @@ def search(request):
     else:
         form = NameForm()
         data = {
-            'forms':form
+            'forms': form
         }
         return render(request, 'publicsite/search.html', data)
-    
-    
-def google_signup(request):
-    return HttpResponse(request)
-
-def logout(request):
-    return HttpResponse(request)
